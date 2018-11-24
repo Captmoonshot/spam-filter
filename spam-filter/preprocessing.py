@@ -21,8 +21,14 @@ def make_bag(new_item=None):	# None for new_item makes it an optional parameter
 	return bow
 
 
-def to_one_hot(text):
-	current_bow = make_bag(text)
+def to_one_hot(text, add_to_bag=True, bow=None):
+	if bow is not None:
+		current_bow = bow
+	else:
+		if add_to_bag:
+			current_bow = make_bag(text)
+		else:
+			current_bow = make_bag(new_item=None)
 
 	text_list = []
 
@@ -53,9 +59,33 @@ def oha_to_text(oha_array):
 	return sent.strip()
 
 
-
-
-
-
-
+def clean_line(line):
+    escaped = ""
+    for word in line.replace("\n", "").split():
+        word = word.replace(".", " ")
+        word = word.replace(",", " ")
+        word = word.replace("?", " ")
+        word = word.replace("!", " ")
+        word = word.replace(":", " ")
+        word = word.replace("'", " ")
+        word = word.replace("\"", " ")
+        word = word.replace(")", " ")
+        word = word.replace("(", " ")
+        word = word.replace("[", " ")
+        word = word.replace("]", " ")
+        word = word.replace(";", " ")
+        word = word.replace("&", " ")
+        word = word.replace("-", " ")
+        word = word.replace("*", " ")
+        word = word.replace("=", " ")
+        word = word.replace("/", " ")
+        word = word.replace("\\", " ")
+        word = word.replace("'s", " is")
+        word = word.replace("'m", " am")
+        word = word.replace("'ll", " will")
+        word = word.replace("n't", " not")
+        word = word.replace("@", "")
+        word = word.strip()
+        escaped += " " + word
+    return escaped.strip()
 
