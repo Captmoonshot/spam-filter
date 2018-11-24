@@ -1,0 +1,45 @@
+# bag of words concept
+
+
+txt = "This is awesome"
+txt2 = "This is bad"
+txt3 = "What a great time"
+
+bag_of_words = ["this", "is", "awesome", "bad", "what", "a", "great", "time"]
+
+# Numerical representation of bag of words
+txt_bow = [0, 1, 2]
+txt2_bow = [0, 1, 3]
+txt3_bow = [4, 5, 6, 7]
+
+# Turn this into one hot array 0s and 1s/True and False
+# For the first txt1, checking to see how txt1 matches up with the bag of words
+
+#txt_oha = [True, True, True, False, False, False, False, False]
+
+txt_oha = [1, 1, 1, 0, 0, 0, 0, 0]
+
+# So to sum up, txt_bow = [0, 1, 2] is based on positions
+# txt_oha is based on if that position has a value in the bag of words string
+
+txt2_oha = [1, 1, 0, 1, 0, 0, 0, 0]
+
+txt3_oha = [0, 0, 0, 0, 1, 1, 1, 1]
+
+from preprocessing import make_bag, to_one_hot, oha_to_text
+
+bow = make_bag('This is awesome')
+
+bow = make_bag('This is bad')
+
+bow = make_bag(['What', 'a', 'great', 'time'])
+
+
+
+
+
+
+
+
+
+
